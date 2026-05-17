@@ -136,21 +136,21 @@ class KgmDecryptor {
   Future<Uint8List?> decrypt() async {
     final file = File(inputPath);
     if (!await file.exists()) {
-      throw Exception('文件不存在: $inputPath');
+      throw Exception('File not found: $inputPath');
     }
 
     final fileSize = await file.length();
     final allData = await file.readAsBytes();
 
     if (allData.length < 0x30) {
-      throw Exception('文件太小，不是有效的 KGM 文件');
+      throw Exception('File too small, not a valid KGM file');
     }
 
     onProgress?.call(0.05);
 
     final headerLen = _readUint32LE(allData, 0x10);
     if (headerLen >= fileSize) {
-      throw Exception('文件头长度无效');
+      throw Exception('Invalid header length');
     }
 
     onProgress?.call(0.1);
@@ -159,7 +159,7 @@ class KgmDecryptor {
     bool isKgm = _isKgmFile(allData);
 
     if (!isVpr && !isKgm) {
-      throw Exception('不是有效的 KGM/VPR 加密文件');
+      throw Exception('Not a valid KGM/VPR encrypted file');
     }
 
     onProgress?.call(0.15);

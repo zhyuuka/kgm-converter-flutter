@@ -1,0 +1,11 @@
+-keep class io.flutter.plugins.GeneratedPluginRegistrant { *; }
+-keep class com.mr.flutter.plugin.filepicker.** { *; }
+-keep class com.baseflow.permissionhandler.** { *; }
+-keep class xyz.luan.audioplayers.** { *; }
+-keep class com.antonkarpenko.ffmpegkit.** { *; }
+-keep class com.crazecoder.openfile.** { *; }
+-keep class io.flutter.plugins.flutter_plugin_android_lifecycle.** { *; }
+-keep class com.github.dart_lang.jni.** { *; }
+-keep class com.github.dart_lang.jni_flutter.** { *; }
+-dontwarn com.github.dart_lang.jni.**
+-dontwarn com.github.dart_lang.jni_flutter.**
